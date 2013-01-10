@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url if current_user.nil?
   end
 
+  def styles
+    render "sample_styles/index", layout: "styles"
+  end
+
   private
 
   def current_user
