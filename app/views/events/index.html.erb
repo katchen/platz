@@ -71,11 +71,14 @@
     <th>
       Date
     </th>
+    <th>
+      RSVP?
+    </th>
   </tr>
 <% @all_events.each do |event| %>
   <tr>
     <td>
-      <%= event.name %>
+      <%= link_to event.name, user_event_url(event.creator, :id => event.id) %>
     </td>
     <td>
       <%= event.street %></br>
@@ -84,6 +87,10 @@
     <td>
       <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
     </td>
+      <td>
+        <%= link_to "RSVP", event_attend_url(event, :user_id => current_user.id), :method => :post %>
+        <%#= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
+      </td>
   </tr>
 <% end %>
 </table>

@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     @events = current_user.events
     @created_events = current_user.created_events
     @all_events= Event.all
-  end
+  end 
 
   def new
     @event = current_user.created_events.build
@@ -51,13 +51,17 @@ class EventsController < ApplicationController
   
 
   def attend
-    @event = current_user.created_events.find(params[:event_id])
+    @event = Event.find(params[:event_id])
     user = User.find(params[:user_id])
     @event.attendees << user
     if @event.save
-      redirect_to user_events_url, :notice => "Attending Event!"
+      redirect_to events_url, :notice => "Attending Event!"
     else
       render "show"
     end
   end
+end
+
+def rsvpyes
+  EventAttendee.create(:user => current_user, :event =>params[:event_id]);
 end
