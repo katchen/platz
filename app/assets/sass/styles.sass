@@ -1,7 +1,11 @@
 @import compass/reset
 @import compass/css3
 @import compass/utilities/general/clearfix
-// do i want use more varialbes
+
+// Variables
+$section-padding: 20px
+$link-color: #1492d6
+$link-hover-color: #0e6999
 
 // typgraphic styles
 body
@@ -33,41 +37,60 @@ p
   margin-bottom: 5px
 
 a
-  color: #1492d6
+  color: $link-color
   text-decoration: none
   &:hover
-    color: #0e6999
+    color: $link-hover-color
 
 // Forms
 // need to do some form and button styling
-.form-wrapper
-  // for look of the field
-  input[type=text]
+.input-wrapper
+  margin-bottom: 5px
 
 // General Layout
 // do we need a grid?
 .container
   width: 1020px
-  margin: auto
+  margin: 0 auto
+  padding: $section-padding
 
 // this is for my sample page.
 // maybe move this somewhere else
 .sample-p
   width: 500px
 
-// a few utilities
+// Basic button
 .button
+  min-width: 135px
+  line-height: 20px
+  border: 1px solid #b0b0b0
+  +background-image(linear-gradient(#34bff3, #074aa2))
+  +border-radius(3px)
+  +box-shadow(inset 0 1px #60cfba)
+  +text-shadow(0 -1px rgba(black, 0.5))
+  color: white
+  font-size: 14px
+  text-align: center
   &:hover
-
-// float something to the left
+    +background-image(linear-gradient(darken(#34bff3, 5%), darken(#074aa2, 5%)))
+    cursor: pointer
+  &.medium
+    line-height: 30px
+    width: 135px
+  &.small
+    line-height: 20px
+    width: 90px
+// Float left
 .left
   float: left
 
-// this one goes right
+// Float right
 .right
   float: right
 
 // clearfix
 .cf
   +pie-clearfix
+
+
 
