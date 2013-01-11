@@ -51,14 +51,26 @@ class EventsController < ApplicationController
   
 
   def attend
-    @event = Event.find(params[:event_id])
+    event = Event.find(params[:event_id])
     user = User.find(params[:user_id])
-    @event.attendees << user
-    if @event.save
-      redirect_to events_url, :notice => "Attending Event!"
+    event.attendees << user
+    reply = params[:reply].to_i
+    if event.save
+      
+      if reply == 0
+        user.set_going(event)
+        notice = "I'll be there!"
+      elsif reply == 1
+        user.set_not_going(event)
+        notice = "Missing out"
+      elsif reply == 2
+        user.set_maybe_going(event)
+        notice = "I don't know yet.."
+      end
     else
-      render "show"
+      notice = "Failed to save your reply"
     end
+    redirect_to events_url, :notice => notice
   end
 end
 

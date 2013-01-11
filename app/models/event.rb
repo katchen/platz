@@ -6,4 +6,8 @@ class Event < ActiveRecord::Base
   def created_by?(user)
     creator == user
   end
+  
+  def reply?(user)
+    attendees.include?(user)
+  end
 end

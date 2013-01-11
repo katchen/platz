@@ -42,6 +42,9 @@
     <th>
       Date
     </th>
+    <th>
+      Reply
+    </th>
   </tr>
 <% @events.each do |event| %>
   <tr>
@@ -55,6 +58,14 @@
     <td>
       <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
     </td>
+    <td>
+          <% if current_user.reply(event) == 0 %>
+            Attending
+          <% elsif current_user.reply(event) == 1%>
+            Not Attending
+          <% elsif current_user.reply(event) == 2%>
+            Maybe Attending
+          <% end %>
   </tr>
 <% end %>
 </table>
@@ -88,8 +99,18 @@
       <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
     </td>
       <td>
-        <%= link_to "RSVP", event_attend_url(event, :user_id => current_user.id), :method => :post %>
+        <% if current_user.reply(event) == 0 %>
+          Attending
+        <% elsif current_user.reply(event) == 1%>
+          Not Attending
+        <% elsif current_user.reply(event) == 2%>
+          Maybe Attending
+        <% else %>
+          <%= link_to "Yes", event_attend_url(event, :user_id => current_user.id, :reply => 0), :method => :post %>
+          <%= link_to "No", event_attend_url(event, :user_id => current_user.id, :reply => 1), :method => :post %>
+          <%= link_to "Maybe", event_attend_url(event, :user_id => current_user.id, :reply => 2), :method => :post %>
         <%#= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
+        <%end%>
       </td>
   </tr>
 <% end %>
