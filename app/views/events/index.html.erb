@@ -58,3 +58,32 @@
   </tr>
 <% end %>
 </table>
+
+<h3>All Upcoming Events</h3>
+<table>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+      Date
+    </th>
+  </tr>
+<% @all_events.each do |event| %>
+  <tr>
+    <td>
+      <%= event.name %>
+    </td>
+    <td>
+      <%= event.street %></br>
+      <%= event.zip_code %>
+    </td>
+    <td>
+      <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+    </td>
+  </tr>
+<% end %>
+</table>
