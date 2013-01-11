@@ -1,16 +1,23 @@
 @import compass/reset
 @import compass/css3
 @import compass/utilities/general/clearfix
+@import home
 
 // Variables
 $section-padding: 20px
 $link-color: #1492d6
 $link-hover-color: #0e6999
+$text-color: #000
+$light-text-color: #818486
+
+
+*, *::after, *::before
+  +box-sizing(border-box)
 
 // typgraphic styles
 body
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-  color: #333333
+  color: $text-color
 
 h1,h2,h3,h4
   margin-bottom: 5px
@@ -42,24 +49,22 @@ a
   &:hover
     color: $link-hover-color
 
+
 // Forms
 // need to do some form and button styling
 .input-wrapper
   margin-bottom: 5px
 
 // General Layout
-// do we need a grid?
 .container
   width: 1020px
   margin: 0 auto
   padding: $section-padding
 
-// this is for my sample page.
-// maybe move this somewhere else
-.sample-p
-  width: 500px
+.header-text
+  margin-bottom: 30px
 
-// Basic button
+// basic button
 .button
   min-width: 135px
   line-height: 20px
@@ -80,6 +85,7 @@ a
   &.small
     line-height: 20px
     width: 90px
+
 // Float left
 .left
   float: left
@@ -91,6 +97,3 @@ a
 // clearfix
 .cf
   +pie-clearfix
-
-
-

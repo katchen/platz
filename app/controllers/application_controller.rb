@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     render "sample_styles/index", layout: "styles"
   end
 
+  def plans
+    render "plans/index", layout: "styles"
+  end
+
   private
 
   def current_user
