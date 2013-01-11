@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller] %>">
+  <div class="header">
+
+  </div>
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>

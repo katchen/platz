@@ -18,6 +18,7 @@ $light-text-color: #818486
 body
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
   color: $text-color
+  @include background(linear-gradient(top, lighten(#F7F7F7, 40%), #E0E0E0))
 
 h1,h2,h3,h4
   margin-bottom: 5px
@@ -56,6 +57,11 @@ a
   margin-bottom: 5px
 
 // General Layout
+.header
+  background-color: #333c43
+  +box-shadow(rgba(black, 0.5) 0 1px 1px 0)
+  height: 60px
+
 .container
   width: 1020px
   margin: 0 auto
@@ -97,3 +103,49 @@ a
 // clearfix
 .cf
   +pie-clearfix
+
+
+.large-event
+  margin-bottom: 20px
+
+.event_table
+  background-color: white
+  padding: 20px
+  +border-radius(5px)
+
+.top-row
+  margin-bottom: 30px
+  .event-container:first-child
+    margin-right: 30px
+.small-event
+  padding-top: 10px
+  border-bottom: 1px solid lighten($light-text-color, 40%)
+  &:first-child
+    padding-top: 0
+  &:last-child
+    border-bottom: none
+  .event_info
+    position: relative
+    width: 345px
+    padding-left: 20px
+    padding-top: 5px
+  .small-event_title
+    font-size: 24px
+    font-weight: bold
+    line-height: 23px
+  .event_date
+    font-weight: normal
+    font-size: 18px
+    color: $light-text-color
+  .address
+    font-size: 18px
+
+.event_edit
+  position: absolute
+  bottom: 10px
+  right: 10px
+  font-size: 13px
+  padding-bottom: 10px
+
+.event_container
+  width: 40%
