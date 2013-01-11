@@ -1,6 +1,73 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import compass/reset
+@import compass/css3
+@import compass/utilities/general/clearfix
+// do i want use more varialbes
 
-@import "compass/reset";
+// typgraphic styles
+body
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  color: #333333
+
+h1,h2,h3,h4
+  margin-bottom: 5px
+
+h1
+  font-size: 38px
+  line-height: 45px
+
+h2
+  font-size: 33px
+  line-height: 34px
+
+h3
+  font-size: 27px
+  line-height: 34px
+
+h4
+  font-size: 18px
+  line-height: 24px
+
+p
+  font-size: 14px
+  line-height: 22px
+  margin-bottom: 5px
+
+a
+  color: #1492d6
+  text-decoration: none
+  &:hover
+    color: #0e6999
+
+// Forms
+// need to do some form and button styling
+.form-wrapper
+  // for look of the field
+  input[type=text]
+
+// General Layout
+// do we need a grid?
+.container
+  width: 1020px
+  margin: auto
+
+// this is for my sample page.
+// maybe move this somewhere else
+.sample-p
+  width: 500px
+
+// a few utilities
+.button
+  &:hover
+
+// float something to the left
+.left
+  float: left
+
+// this one goes right
+.right
+  float: right
+
+// clearfix
+.cf
+  +pie-clearfix
+
