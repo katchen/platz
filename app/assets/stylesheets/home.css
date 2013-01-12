@@ -1,0 +1,31 @@
+/* line 1, ../sass/home.sass */
+.event-photo {
+  float: left;
+}
+
+/* line 5, ../sass/home.sass */
+.event_info {
+  float: left;
+  width: 710px;
+  padding-left: 50px;
+}
+
+/* line 10, ../sass/home.sass */
+.event_date {
+  font-weight: bold;
+}
+
+/* line 12, ../sass/home.sass */
+.event_summary {
+  font-size: 22px;
+}
+
+/* line 14, ../sass/home.sass */
+.event_detail {
+  margin-bottom: 10px;
+}
+
+/* line 16, ../sass/home.sass */
+.large-event_title {
+  margin-bottom: 15px;
+}

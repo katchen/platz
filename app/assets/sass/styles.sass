@@ -1,0 +1,170 @@
+@import compass/reset
+@import compass/css3
+@import compass/utilities/general/clearfix
+@import home
+
+// Variables
+$section-padding: 20px
+$link-color: #1492d6
+$link-hover-color: #0e6999
+$text-color: #000
+$light-text-color: #818486
+
+
+*, *::after, *::before
+  +box-sizing(border-box)
+
+// typgraphic styles
+body
+  height: 100%
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  color: $text-color
+  min-height: 500px
+
+.gradient
+  @include background(linear-gradient(top, lighten(#F7F7F7, 40%), #E0E0E0))
+
+h1,h2,h3,h4
+  margin-bottom: 5px
+
+h1
+  font-size: 38px
+  line-height: 45px
+
+h2
+  font-size: 33px
+  line-height: 34px
+
+h3
+  font-size: 27px
+  line-height: 34px
+
+h4
+  font-size: 18px
+  line-height: 24px
+
+p
+  font-size: 14px
+  line-height: 22px
+  margin-bottom: 5px
+
+a
+  color: $link-color
+  text-decoration: none
+  &:hover
+    color: $link-hover-color
+
+
+// Forms
+// need to do some form and button styling
+.input-wrapper
+  margin-bottom: 5px
+
+// General Layout
+.header
+  background-color: #333c43
+  +box-shadow(rgba(black, 0.5) 0 1px 1px 0)
+  height: 50px
+
+.container
+  width: 1020px
+  margin: 0 auto
+  padding: $section-padding
+
+.header-text
+  margin-bottom: 30px
+
+// basic button
+.button
+  min-width: 135px
+  line-height: 20px
+  border: 1px solid #b0b0b0
+  +background-image(linear-gradient(#34bff3, #074aa2))
+  +border-radius(3px)
+  +box-shadow(inset 0 1px #60cfba)
+  +text-shadow(0 -1px rgba(black, 0.5))
+  color: white
+  font-size: 14px
+  text-align: center
+  &:hover
+    +background-image(linear-gradient(darken(#34bff3, 5%), darken(#074aa2, 5%)))
+    cursor: pointer
+  &.medium
+    line-height: 30px
+    width: 135px
+  &.small
+    line-height: 20px
+    width: 90px
+
+// Float left
+.left
+  float: left
+
+// Float right
+.right
+  float: right
+
+// clearfix
+.cf
+  +pie-clearfix
+
+
+.large-event
+  margin-bottom: 20px
+
+.event_table
+  background-color: white
+  padding: 20px
+  +border-radius(5px)
+  +box-shadow(inset 1px 1px rgba(black, 0.2), inset -1px -1px rgba(black, 0.2))
+
+.top-row
+  margin-bottom: 30px
+  .event-container:first-child
+    margin-right: 30px
+.small-event
+  padding-top: 10px
+  border-bottom: 1px solid lighten($light-text-color, 40%)
+  position: relative
+  &:first-child
+    padding-top: 0
+  &:last-child
+    border-bottom: none
+  .event_info
+    position: relative
+    width: 345px
+    padding-left: 20px
+    padding-top: 5px
+  .small-event_title
+    font-size: 24px
+    font-weight: bold
+    line-height: 23px
+  .event_date
+    font-weight: normal
+    font-size: 18px
+    color: $light-text-color
+  .address
+    font-size: 18px
+
+.event_edit
+  position: absolute
+  bottom: 10px
+  right: 10px
+  font-size: 13px
+  padding-bottom: 10px
+
+.event_container
+  width: 40%
+
+.rsvp
+  position: absolute
+  left: 400px
+  top: 45px
+  width: 250px
+
+.create-button
+  float: right
+
+.rsvp-heading
+  font-weight: bold
+  margin-right: 20px

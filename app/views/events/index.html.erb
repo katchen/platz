@@ -1,118 +1,131 @@
-<h4><%= link_to "Create an Event", new_user_event_url(current_user) %></h4>
-<h3>Events I Created</h3>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Address
-    </th>
-    <th>
-      Date
-    </th>
-  </tr>
-<% @created_events.each do |event| %>
-  <tr>
-    <td>
-      <%= event.name %>
-    </td>
-    <td>
-      <%= event.street %></br>
-      <%= event.zip_code %>
-    </td>
-    <td>
-      <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
-    </td>
-    <td>
-      <%= link_to 'edit', edit_user_event_url(current_user, :id => event.id) %>
-      <%= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
-    </td>
-  </tr>
-<% end %>
-</table>
-<h3>Events I'm attending</h3>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Address
-    </th>
-    <th>
-      Date
-    </th>
-    <th>
-      Reply
-    </th>
-  </tr>
-<% @events.each do |event| %>
-  <tr>
-    <td>
-      <%= event.name %>
-    </td>
-    <td>
-      <%= event.street %></br>
-      <%= event.zip_code %>
-    </td>
-    <td>
-      <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
-    </td>
-    <td>
-          <% if current_user.reply(event) == 0 %>
-            Attending
-          <% elsif current_user.reply(event) == 1%>
-            Not Attending
-          <% elsif current_user.reply(event) == 2%>
-            Maybe Attending
-          <% end %>
-  </tr>
-<% end %>
-</table>
+<h4 class="create-button"><button><%= link_to "Create an Event", new_user_event_url(current_user) %></button></h4>
+<h1 class="header-text">Welcome! <%= current_user.email %></h1>
+<div class="large-event cf">
 
-<h3>All Upcoming Events</h3>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Address
-    </th>
-    <th>
-      Date
-    </th>
-    <th>
-      RSVP?
-    </th>
-  </tr>
-<% @all_events.each do |event| %>
-  <tr>
-    <td>
-      <%= link_to event.name, user_event_url(event.creator, :id => event.id) %>
-    </td>
-    <td>
-      <%= event.street %></br>
-      <%= event.zip_code %>
-    </td>
-    <td>
-      <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
-    </td>
-      <td>
-        <% if current_user.reply(event) == 0 %>
-          Attending
-        <% elsif current_user.reply(event) == 1%>
-          Not Attending
-        <% elsif current_user.reply(event) == 2%>
-          Maybe Attending
-        <% else %>
-          <%= link_to "Yes", event_attend_url(event, :user_id => current_user.id, :reply => 0), :method => :post %>
-          <%= link_to "No", event_attend_url(event, :user_id => current_user.id, :reply => 1), :method => :post %>
-          <%= link_to "Maybe", event_attend_url(event, :user_id => current_user.id, :reply => 2), :method => :post %>
-        <%#= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
-        <%end%>
-      </td>
-  </tr>
+  <div class="event-photo">
+      <img src="http://placekitten.com/200/200">
+  </div>
+
+  <div class="event_info">
+   <h2 class="large-event_title"><%=link_to @all_events[0].name, user_event_url(@all_events[0], :user_id => @all_events[0].creator)  %></h2>
+    <ul class="event_summary">
+      <li class="event_detail event_date">Date: January 12, 2013</li>
+      <li class="event_detail"><a href="#lightbox" class="event_rsvp">You're going!</li>
+      <li class="event_detail"><a href="eventdetails.html" class="events_more-link">More</a></li>
+    </ul>
+  </div>
+
+</div><!--close large event-->
+
+<div class="top-row cf">
+<div class="event-container left">
+<h3>Events I Created</h3>
+
+<div class="event_table half_column">
+
+<% @created_events.each do |event| %>
+  <div class="small-event cf">
+
+  <div class="event-photo">
+      <img src="http://placekitten.com/75/75">
+  </div>
+
+  <div class="event_info">
+   <h2 class="small-event_title"><%=  link_to event.name, user_event_url(event, :user_id => event.creator)  %></h2>
+    <ul class="event_summary">
+      <li class="event_detail event_date">
+        <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+      </li>
+      <li class="event_detail address">
+        <%= event.street %><br />
+        <%= event.zip_code %>
+      </li>
+    </ul>
+    <div class="event_edit">
+      <%= link_to 'edit', edit_user_event_url(current_user, :id => event.id) %>
+      |
+      <%= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
+    </div>
+  </div>
+
+</div><!--close small event-->
 <% end %>
-</table>
+</div>
+</div>
+
+
+
+<div class="event-container left">
+<h3>Events I'm attending</h3>
+<div class="event_table half_column ">
+
+<% @events.each do |event| %>
+  <div class="small-event cf">
+
+  <div class="event-photo">
+      <img src="http://placekitten.com/75/75">
+  </div>
+
+  <div class="event_info">
+   <h2 class="small-event_title"><%=  link_to event.name, user_event_url(event, :user_id => event.creator)  %></h2>
+    <ul class="event_summary">
+      <li class="event_detail event_date">
+        <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+      </li>
+      <li class="event_detail address">
+        <%= event.street %><br />
+        <%= event.zip_code %>
+      </li>
+    </ul>
+  </div>
+
+</div><!--close small event-->
+<% end %>
+</div>
+</div>
+</div>
+
+
+<div class="event-container">
+<h3>All Upcoming Events</h3>
+
+<div class="event_table half_column ">
+<% @all_events.each do |event| %>
+  <div class="small-event cf">
+
+  <div class="event-photo">
+      <img src="http://placekitten.com/75/75">
+  </div>
+
+  <div class="event_info">
+   <h2 class="small-event_title"><%= link_to event.name, user_event_url(event, :user_id => event.creator) %></h2>
+    <ul class="event_summary">
+      <li class="event_detail event_date">
+        <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+      </li>
+      <li class="event_detail address">
+        <%= event.street %><br />
+        <%= event.zip_code %>
+      </li>
+    </ul>
+    <div class="rsvp">
+      <% if current_user.reply(event) == 0 %>
+        Attending
+      <% elsif current_user.reply(event) == 1%>
+        Not Attending
+      <% elsif current_user.reply(event) == 2%>
+        Maybe Attending
+      <% else %>
+        <span class="rsvp-heading">RSVP:</span>
+        <%= link_to "Yes", event_attend_url(event, :user_id => current_user.id, :reply => 0), :method => :post %> · 
+        <%= link_to "No", event_attend_url(event, :user_id => current_user.id, :reply => 1), :method => :post %> · 
+        <%= link_to "Maybe", event_attend_url(event, :user_id => current_user.id, :reply => 2), :method => :post %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div><!--close small event-->
+<% end %>
+</div>
+</div>

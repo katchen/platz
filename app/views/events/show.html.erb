@@ -12,4 +12,12 @@
   <% # else %>
     <% # = link_to 'attend', event_attend_url(@event, :user_id => current_user.id), :method => :post %>
   <% end %>
+  <br /><br />
+  <%
+    words = @event.street.split(/\W+/)
+    query = words.join("+")
+  %>
+
+  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Square,+Inc,+5th+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=square&amp;sll=37.7577,-122.4376&amp;sspn=0.128659,0.185394&amp;ie=UTF8&amp;hq=Square,+Inc,+5th+Street,+San+Francisco,+CA&amp;t=m&amp;ll=37.781792,-122.406105&amp;spn=0.017637,0.032015&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Square,+Inc,+5th+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=square&amp;sll=37.7577,-122.4376&amp;sspn=0.128659,0.185394&amp;ie=UTF8&amp;hq=Square,+Inc,+5th+Street,+San+Francisco,+CA&amp;t=m&amp;ll=37.781792,-122.406105&amp;spn=0.017637,0.032015" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+  
 </div>
